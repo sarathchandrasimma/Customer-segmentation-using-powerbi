@@ -1,86 +1,74 @@
 # Dataset Cleaning Process - README
 
-## Overview
-This document provides a detailed step-by-step explanation of the data cleaning process applied to the customer dataset. The dataset contains columns such as `CustomerID`, `Email`, `updated_phone_number`, `City`, `State`, `Country`, `Gender`, `Age`, `Updated_Joined_date`, `updated_last_purchase_date`, `TotalSpent`, `LoyaltyPoints`, `PurchaseFrequency`, `CustomerSegment`, `PreferredPaymentMethod`, `MaritalStatus`, `Updated_Account_creation_date`, `AccountStatus`, `LastUpdated`, `Updated_Referrer_Id`, `FeedbackRating`, `Domain of mail`, and `country_code`.
+### Overview
 
-The data cleaning was performed in **Power BI** using Power Query Editor.
+This document provides a detailed step-by-step explanation of the data cleaning process applied to the customer, products, regions, and transactions datasets. Each dataset underwent cleaning in Power BI using the Power Query Editor to ensure uniformity, consistency, and accuracy.
 
-## Cleaning Steps
+## Datasets:
 
-### 1. **Import Data**
-- Open Power BI Desktop.
-- Import the CSV file containing the raw data by selecting `Get Data` > `Text/CSV`.
+## Customer Dataset
 
-### 2. **Data Transformation**
-Once the data is loaded into Power BI, open Power Query Editor by clicking on `Transform Data`.
+## Products Dataset
 
-### 3. **Remove Invalid Email Domains**
-- Filter the `Email` column to find any invalid entries (e.g., `alyssa.rodriguez@None`).
-- Remove or replace invalid emails as needed.
+## Regions Dataset
 
-### 4. **Standardize Phone Numbers**
-- Clean the `updated_phone_number` column to ensure a consistent format.
-- Replace inconsistent characters (e.g., replace `x` with `-`).
-- Ensure that phone numbers are in international formats (e.g., `+1-123-456-7890`).
+Transactions Dataset
 
-### 5. **Handle Missing Values**
-- Check for missing values across relevant columns, especially `Gender`, `Age`, `MaritalStatus`, etc.
-- Use the `Fill Down` option to fill missing values or manually input missing values based on logical assumptions.
-- Impute missing numerical values (e.g., `Age`) by using the median or mean value.
+## 1. Customer Dataset Cleaning Process
 
-### 6. **Correct Data Types**
-- Ensure each column has the correct data type:
-  - `Email` and `City` as **Text**.
-  - `Age` and `TotalSpent` as **Number**.
-  - Date columns such as `Updated_Joined_date`, `updated_last_purchase_date`, and `Updated_Account_creation_date` as **Date**.
-- Adjust data types using the `Data Type` option in Power Query.
+Columns:
+CustomerID, Email, updated_phone_number, City, State, Country, Gender, Age, Updated_Joined_date, updated_last_purchase_date, TotalSpent, LoyaltyPoints, PurchaseFrequency, CustomerSegment, PreferredPaymentMethod, MaritalStatus, Updated_Account_creation_date, AccountStatus, LastUpdated, Updated_Referrer_Id, FeedbackRating, Domain of mail, country_code.
 
-### 7. **Extract Email Domains**
-- In the `Email` column, split the data by `@` to extract the domain of the email.
-- Use `Split Column` > `By Delimiter` (`@`) to create a new `Domain of mail` column (e.g., `gmail.com`, `yahoo.com`).
+### Cleaning Steps
 
-### 8. **Create Derived Columns**
-- Add a new column for customer classification based on the combination of `TotalSpent` and `LoyaltyPoints`.
-- Use the "Add Column" feature to create conditional logic (e.g., customers with high spending and loyalty points are classified as `Gold`, `Platinum`, etc.).
+Import Data: Imported the dataset into Power BI via Get Data > Text/CSV.
+Remove Invalid Email Domains: Cleaned the Email column to remove invalid domains.
+Standardize Phone Numbers: Ensured consistent formatting of phone numbers (e.g., +1-123-456-7890).
+Handle Missing Values: Filled or imputed missing values logically.
+Correct Data Types: Ensured proper data types for each column (e.g., Date, Number, Text).
+Extract Email Domains: Created a new Domain of mail column.
+Create Derived Columns: Added customer classifications based on TotalSpent and LoyaltyPoints.
+Standardize Date Formats: Applied consistent date formatting across columns.
+Standardize Country Codes: Ensured uniform country code formatting (e.g., adding +).
 
-### 9. **Clean Date Formats**
-- Standardize the date formats across all date columns (`Updated_Joined_date`, `updated_last_purchase_date`, etc.).
-- Ensure consistent format, e.g., `dd-mm-yyyy`, and replace any inconsistent formats using the `Replace Values` feature.
+## 2. Products Dataset Cleaning Process
 
-### 10. **Standardize Country Codes**
-- Verify the `country_code` column for uniformity.
-- Add or adjust country codes to maintain consistency (e.g., adding `+` to international codes).
-- Use the `Replace Values` feature to format the country codes appropriately.
+Columns:
+ProductID, ProductName, Category, Price, StockStatus, Supplier, Updated_Price, Updated_StockStatus, LastUpdated, Discontinued.
 
-### 11. **Save and Load Data**
-- After completing the cleaning process, click on `Close & Apply` to apply all the transformations.
-- The cleaned dataset will be loaded into Power BI for further analysis.
+### Cleaning Steps
 
-## Final Cleaned Data Structure
-After cleaning, the dataset will contain the following key columns:
-- `CustomerID`
-- `Email`
-- `updated_phone_number`
-- `City`
-- `State`
-- `Country`
-- `Gender`
-- `Age`
-- `Updated_Joined_date`
-- `updated_last_purchase_date`
-- `TotalSpent`
-- `LoyaltyPoints`
-- `PurchaseFrequency`
-- `CustomerSegment`
-- `PreferredPaymentMethod`
-- `MaritalStatus`
-- `Updated_Account_creation_date`
-- `AccountStatus`
-- `LastUpdated`
-- `Updated_Referrer_Id`
-- `FeedbackRating`
-- `Domain of mail`
-- `country_code`
+Remove Duplicates: Checked and removed duplicate entries based on ProductID.
+Handle Missing Values: Imputed missing values in the Price and StockStatus columns.
+Standardize Price Formats: Ensured consistent currency formatting (e.g., $100.00).
+Correct Data Types: Standardized column types, ensuring Price is a number and ProductName is text.
+Update Discontinued Products: Marked products as Discontinued where applicable.
 
-## Conclusion
-The dataset has been successfully cleaned and is now ready for analysis. All missing values have been handled, phone numbers standardized, email domains extracted, and data types corrected. This cleaned dataset will ensure accurate insights during analysis.
+## 3. Regions Dataset Cleaning Process
+
+Columns:
+RegionID, RegionName, Country, State, Updated_RegionName, LastUpdated, CountryCode.
+
+### Cleaning Steps
+
+Remove Invalid Regions: Filtered out incomplete or invalid RegionName entries.
+Standardize Country Codes: Ensured uniformity in CountryCode (e.g., +1 for US).
+Handle Missing Values: Addressed missing region or country data using fill down logic.
+Correct Data Types: Ensured text formatting for RegionName and number formatting for CountryCode.
+
+## 4. Transactions Dataset Cleaning Process
+
+Columns:
+TransactionID, CustomerID, ProductID, TransactionDate, Quantity, TotalAmount, PaymentMethod, DiscountApplied, LastUpdated.
+
+### Cleaning Steps
+
+Remove Duplicates: Ensured that TransactionID is unique and removed any duplicates.
+Handle Missing Data: Imputed or removed missing entries for Quantity and TotalAmount.
+Correct Data Types: Applied appropriate data types, ensuring TransactionDate is in a date format and TotalAmount is a number.
+Standardize Payment Methods: Ensured uniformity in the PaymentMethod column (e.g., Credit Card, Paypal).
+Update Discounts: Checked for consistent values in the DiscountApplied column.
+
+### Conclusion
+
+The datasets have been successfully cleaned and standardized. Each dataset now contains consistent, error-free, and well-structured data that can be used for analysis and reporting in Power BI.
