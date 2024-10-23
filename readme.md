@@ -12,7 +12,7 @@ This document provides a detailed step-by-step explanation of the data cleaning 
 
 ## Regions Dataset
 
-Transactions Dataset
+## Transactions Dataset
 
 ## 1. Customer Dataset Cleaning Process
 
