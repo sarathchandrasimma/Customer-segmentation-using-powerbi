@@ -82,9 +82,9 @@ Add Churn Rate Analysis to track customer retention trends.
 Include additional KPIs like Customer Acquisition Cost (CAC).
 Implement real-time data updates.
 ## Contact
-For further queries or support, contact:
-Email: [your.sarathchandrasimma04@gmail.com]
-GitHub: [(https://github.com/sarathchandrasimma)]
+For further queries or support
+### Email: [your.sarathchandrasimma04@gmail.com]
+### GitHub: [(https://github.com/sarathchandrasimma)]
 
 
 ## milesotne-1
